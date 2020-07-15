@@ -1,0 +1,14 @@
+version: '2.0'
+services:
+  web:
+    build: .
+    ports:
+      - "8090:8080"
+    links:
+      - mydatabase
+  mydatabase:
+    image: wnameless/oracle-xe-11g-r2
+    ports:
+    - "49162:1521"
+    environment:
+    - ORACLE_ENABLE_XDB=true
